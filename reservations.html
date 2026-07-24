@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve a Book - Uni Library</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Uni Library</h1>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./catalog.html">Catalog</a>
+            <a href="./reservations.html"><strong>Reservations</strong></a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Reserve a Book</h2>
+        <p>Please fill out the form below to reserve a title for pickup or delivery.</p>
+        <form action="#" method="POST" class="reservation-form">
+            <div class="form-group">
+                <label for="book-select">Select a Book - Temporary hardcoded until local storage done:</label>
+                <select id="book-select" name="book" required>
+                    <option value="" disabled selected>-- Choose a title --</option>
+                    <option value="1984">1984 by George Orwell</option>
+                    <option value="dune">Dune by Frank Herbert</option>
+                    <option value="pride-and-prejudice">Pride and Prejudice by Jane Austen</option>
+                    <option value="the-hobbit">The Hobbit by J.R.R. Tolkien</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="name" placeholder="Jane Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" placeholder="123 Library Lane&#10;Cityville, ST 12345" required></textarea>
+            </div>
+            
+            <button type="submit">Submit Reservation</button>
+        </form>
+    </main>
+    <script src="./js/reservations.js"></script>
+</body>
+</html>
