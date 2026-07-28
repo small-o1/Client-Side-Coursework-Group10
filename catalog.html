@@ -68,22 +68,18 @@
                 $('#results-count').text('Showing ' + books.length + ' book' + (books.length !== 1 ? 's' : ''));
             }
 
-            // Build genre filter buttons
             buildGenreFilters('genre-filters', function(genre) {
                 currentGenre = genre;
                 loadBooks();
             });
 
-            // Initial render
             loadBooks();
 
-            // Search on button click
             $('#search-btn').on('click', function() {
                 currentQuery = $('#search-input').val();
                 loadBooks();
             });
 
-            // Search on Enter key
             $('#search-input').on('keypress', function(e) {
                 if (e.which === 13) {
                     currentQuery = $('#search-input').val();
@@ -91,7 +87,6 @@
                 }
             });
 
-            // Pre-fill search from URL param (e.g. from reservations redirect)
             var urlParams = new URLSearchParams(window.location.search);
             var searchParam = urlParams.get('search');
             if (searchParam) {

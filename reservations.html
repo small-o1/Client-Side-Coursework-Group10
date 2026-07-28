@@ -62,5 +62,20 @@
 
     <script src="js/catalog.js"></script>
     <script src="js/reservations.js"></script>
+    <script>
+        // Populate book dropdown from catalogue and handle ?book= URL param
+        $(document).ready(function() {
+            var books = getCatalogue();
+            var $select = $('#book-select');
+            $.each(books, function(i, book) {
+                $select.append($('<option>', { value: book.title, text: book.title + ' by ' + book.author }));
+            });
+            var urlParams = new URLSearchParams(window.location.search);
+            var preselectedBook = urlParams.get('book');
+            if (preselectedBook) {
+                $select.val(decodeURIComponent(preselectedBook));
+            }
+        });
+    </script>
 </body>
 </html>

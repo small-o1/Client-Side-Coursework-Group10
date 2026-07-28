@@ -1,9 +1,3 @@
-/**
- * Library Book Catalogue
- * Hardcoded data stored into localStorage for browsing and reservations.
- */
-
-// Seed catalogue data
 const DEFAULT_BOOKS = [
     { id: 1,  title: "1984",                  author: "George Orwell",           year: 1949,  genre: "Dystopian Fiction",       isbn: "978-0451524935", copies: 3 },
     { id: 2,  title: "Dune",                  author: "Frank Herbert",           year: 1965,  genre: "Science Fiction",         isbn: "978-0441172719", copies: 2 },
@@ -27,9 +21,6 @@ const DEFAULT_BOOKS = [
     { id: 20, title: "The Handmaid's Tale",    author: "Margaret Atwood",         year: 1985,  genre: "Dystopian Fiction",       isbn: "978-0385490818", copies: 3 }
 ];
 
-/**
- * Initialise the catalogue in localStorage if not already present.
- */
 function initCatalogue() {
     const stored = localStorage.getItem('libraryCatalogue');
     if (!stored) {
@@ -37,17 +28,11 @@ function initCatalogue() {
     }
 }
 
-/**
- * Return the full list of books from localStorage.
- */
 function getCatalogue() {
     const stored = localStorage.getItem('libraryCatalogue');
     return stored ? JSON.parse(stored) : DEFAULT_BOOKS;
 }
 
-/**
- * Search the catalogue by title, author, or genre (case-insensitive).
- */
 function searchCatalogue(query) {
     const books = getCatalogue();
     const q = query.toLowerCase().trim();
@@ -59,18 +44,12 @@ function searchCatalogue(query) {
     });
 }
 
-/**
- * Filter books by genre.
- */
 function filterByGenre(genre) {
     const books = getCatalogue();
     if (!genre || genre === 'all') return books;
     return books.filter(function(book) { return book.genre === genre; });
 }
 
-/**
- * Render a list of books into the provided DOM element.
- */
 function renderBookList(books, containerId) {
     var container = document.getElementById(containerId);
     if (!container) return;
@@ -96,9 +75,6 @@ function renderBookList(books, containerId) {
     container.innerHTML = html;
 }
 
-/**
- * Build genre filter buttons from the current catalogue.
- */
 function buildGenreFilters(containerId, onChangeCallback) {
     var container = document.getElementById(containerId);
     if (!container) return;
@@ -118,12 +94,10 @@ function buildGenreFilters(containerId, onChangeCallback) {
     }
     container.innerHTML = html;
 
-    // Attach click handlers
     var buttons = container.querySelectorAll('.filter-btn');
     for (var i = 0; i < buttons.length; i++) {
         (function(btn) {
             btn.addEventListener('click', function() {
-                // Remove active from all
                 for (var j = 0; j < buttons.length; j++) {
                     buttons[j].classList.remove('active');
                 }
@@ -136,5 +110,4 @@ function buildGenreFilters(containerId, onChangeCallback) {
     }
 }
 
-// Initialise on page load
 initCatalogue();
