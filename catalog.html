@@ -3,14 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Library Catalog</title>
-    <link rel="stylesheet" href="/css/styles.css">   
+    <title>Library Catalogue - Browse Books</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Web Design Exam</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="catalog.html" class="active">Search Catalog</a>
-        <a href="reservations.html">My Reservations</a>
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">UniLibrary</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="catalog.html" class="active">Search Catalog</a>
+                <a href="reservations.html">My Reservations</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="catalog-header">
+            <div class="container">
+                <h1>Browse the Library Catalogue</h1>
+                <p>Search by title, author, or genre. Filter to find exactly what you need.</p>
+                
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search books by title, author, or genre..." autocomplete="off">
+                    <button id="search-btn" class="btn-search">Search</button>
+                </div>
+
+                <div class="genre-filters" id="genre-filters"></div>
+            </div>
+        </section>
+
+        <section class="catalogue-list container">
+            <div class="results-meta">
+                <span id="results-count"></span>
+            </div>
+            <div id="book-list"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 UniLibrary — Group 10 Client-Side Coursework</p>
+        </div>
+    </footer>
+
+    <script src="js/catalog.js"></script>
+    <script>
+        $(document).ready(function() {
+            var currentGenre = 'all';
+            var currentQuery = '';
+
+            function loadBooks() {
+                var books;
+                if (currentQuery) {
+                    books = searchCatalogue(currentQuery);
+                } else {
+                    books = getCatalogue();
+                }
+                if (currentGenre !== 'all') {
+                    books = books.filter(function(b) { return b.genre === currentGenre; });
+                }
+                renderBookList(books, 'book-list');
+                $('#results-count').text('Showing ' + books.length + ' book' + (books.length !== 1 ? 's' : ''));
+            }
+
+            buildGenreFilters('genre-filters', function(genre) {
+                currentGenre = genre;
+                loadBooks();
+            });
+
+            loadBooks();
+
+            $('#search-btn').on('click', function() {
+                currentQuery = $('#search-input').val();
+                loadBooks();
+            });
+
+            $('#search-input').on('keypress', function(e) {
+                if (e.which === 13) {
+                    currentQuery = $('#search-input').val();
+                    loadBooks();
+                }
+            });
+
+            var urlParams = new URLSearchParams(window.location.search);
+            var searchParam = urlParams.get('search');
+            if (searchParam) {
+                $('#search-input').val(searchParam);
+                currentQuery = searchParam;
+                loadBooks();
+            }
+        });
+    </script>
 </body>
 </html>
