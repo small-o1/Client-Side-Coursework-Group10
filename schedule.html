@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Schedule - UniLibrary</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">UniLibrary</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Search Catalog</a>
+                <a href="reservations.html">My Reservations</a>
+                <a href="schedule.html">Library Hours</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="schedule-main">
+
+        <div class="container schedule-top-bar">
+            <div class="schedule-top-left">
+                <a href="index.html" class="back-btn">&#8592; Back</a>
+                <h1>Library Schedule</h1>
+            </div>
+            <div class="view-toggle">
+                <button class="toggle-btn active" id="btn-list">List View</button>
+                <button class="toggle-btn" id="btn-calendar">Calendar View</button>
+            </div>
+        </div>
+
+        <!-- LIST VIEW -->
+        <section id="list-view" class="container schedule-list-view">
+            <div class="schedule-layout">
+
+                <div class="schedule-hours-card">
+                    <h3>Opening Hours</h3>
+                    <table class="schedule-table">
+                        <tbody>
+                            <tr><td>Monday</td><td>8:00 AM – Midnight</td></tr>
+                            <tr><td>Tuesday</td><td>8:00 AM – Midnight</td></tr>
+                            <tr><td>Wednesday</td><td>8:00 AM – Midnight</td></tr>
+                            <tr><td>Thursday</td><td>8:00 AM – Midnight</td></tr>
+                            <tr><td>Friday</td><td>8:00 AM – Midnight</td></tr>
+                            <tr><td>Saturday</td><td>8:00 AM – Midnight</td></tr>
+                            <tr><td>Sunday</td><td>8:00 AM – Midnight</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="schedule-note">Study rooms are available 24/7 with a valid student ID.</p>
+                </div>
+
+                <aside class="schedule-notices-card">
+                    <h3>Upcoming Notices</h3>
+                    <div class="notices-scroll">
+                        <div class="notice notice-warning">
+                            <strong>12–13 Jul 2026 — Bank Holiday</strong>
+                            <p>The library will be closed on 12th and 13th July for the Bank Holiday.</p>
+                        </div>
+                        <div class="notice notice-warning">
+                            <strong>25 Aug 2026 — Bank Holiday</strong>
+                            <p>The library will be closed all day for the Summer Bank Holiday.</p>
+                        </div>
+                        <div class="notice notice-info">
+                            <strong>12 Sep 2026 — Maintenance</strong>
+                            <p>Scheduled IT maintenance 9:00 AM – 1:00 PM. Study rooms open; borrowing may be limited.</p>
+                        </div>
+                        <div class="notice notice-warning">
+                            <strong>25–26 Dec 2026 — Christmas Closure</strong>
+                            <p>The library will be closed on Christmas Day and Boxing Day.</p>
+                        </div>
+                        <div class="notice notice-info">
+                            <strong>1 Jan 2027 — New Year's Day</strong>
+                            <p>The library will be closed for New Year's Day.</p>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </section>
+
+        <!-- CALENDAR VIEW -->
+        <section id="calendar-view" class="container schedule-cal-view hidden">
+            <div class="cal-nav">
+                <button id="prev-month" class="cal-nav-btn">&#8592; Prev</button>
+                <h2 id="cal-title"></h2>
+                <button id="next-month" class="cal-nav-btn">Next &#8594;</button>
+            </div>
+            <div id="cal-grid"></div>
+            <div class="cal-legend">
+                <span class="legend-item"><span class="legend-dot open"></span>Open (8AM – Midnight)</span>
+                <span class="legend-item"><span class="legend-dot limited"></span>Limited Hours</span>
+                <span class="legend-item"><span class="legend-dot closed"></span>Closed</span>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Opening Hours</h4>
+                <ul class="hours-list">
+                    <li><span>Monday – Sunday</span><span>8:00 AM – Midnight</span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Find Us</h4>
+                <address>York St<br>Belfast BT15 1ED</address>
+                <p class="footer-phone">📞 028 7012 3456</p>
+            </div>
+            <div class="footer-col">
+                <h4>UniLibrary</h4>
+                <p class="footer-about">A non-profit university library dedicated to helping students learn, research, and grow.</p>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="catalog.html">Search Catalog</a>
+                    <a href="reservations.html">My Reservations</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/schedule.js"></script>
+</body>
+</html>

@@ -12,70 +12,68 @@
         <div class="container nav-container">
             <div class="logo">UniLibrary</div>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="catalog.html">Search Catalog</a>
-                <a href="reservations.html" class="active">My Reservations</a>
+                <a href="./index.html">Home</a>
+                <a href="./catalog.html">Search Catalog</a>
+                <a href="./reservations.html">My Reservations</a>
+                <a href="./schedule.html">Library Hours</a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="reservation-section container">
-            <h1>Reserve a Book</h1>
-            <p>Fill out the form below to reserve a title for pickup at the circulation desk.</p>
+    <main class="page-content">
+        <h2>Reserve a Book</h2>
+        <p>Please fill out the form below to reserve a title for pickup or delivery.</p>
+        <form action="#" method="POST" class="reservation-form">
+            <div class="form-group">
+                <label for="book-select">Select a Book - Temporary hardcoded until local storage done:</label>
+                <select id="book-select" name="book" required>
+                    <option value="" disabled selected>-- Choose a title --</option>
+                    <option value="1984">1984 by George Orwell</option>
+                    <option value="dune">Dune by Frank Herbert</option>
+                    <option value="pride-and-prejudice">Pride and Prejudice by Jane Austen</option>
+                    <option value="the-hobbit">The Hobbit by J.R.R. Tolkien</option>
+                </select>
+            </div>
 
-            <form id="reservation-form" class="reservation-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="book-select">Select a Book</label>
-                    <select id="book-select" name="book" required>
-                        <option value="" disabled selected>-- Choose a title --</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="name" placeholder="Jane Doe" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="full-name">Full Name:</label>
-                    <input type="text" id="full-name" name="name" placeholder="Jane Doe" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <textarea id="address" name="address" placeholder="123 Library Lane, Cityville, ST 12345" required></textarea>
-                </div>
-                
-                <button type="submit" class="btn-submit">Submit Reservation</button>
-            </form>
-
-            <div id="confirmation-message"></div>
-        </section>
-
-        <section class="my-reservations container">
-            <h2>My Reservations</h2>
-            <div id="reservations-list"></div>
-        </section>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" placeholder="123 Library Lane&#10;Cityville, ST 12345" required></textarea>
+            </div>
+            
+            <button type="submit">Submit Reservation</button>
+        </form>
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2026 UniLibrary — Group 10 Client-Side Coursework</p>
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Opening Hours</h4>
+                <ul class="hours-list">
+                    <li><span>Monday – Sunday</span><span>8:00 AM – Midnight</span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Find Us</h4>
+                <address>York St<br>Belfast BT15 1ED</address>
+                <p class="footer-phone">📞 028 7012 3456</p>
+            </div>
+            <div class="footer-col">
+                <h4>UniLibrary</h4>
+                <p class="footer-about">A non-profit university library dedicated to helping students learn, research, and grow.</p>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="catalog.html">Search Catalog</a>
+                    <a href="reservations.html">My Reservations</a>
+                </nav>
+            </div>
         </div>
     </footer>
 
-    <script src="js/catalog.js"></script>
-    <script src="js/reservations.js"></script>
-    <script>
-        // Populate book dropdown from catalogue and handle ?book= URL param
-        $(document).ready(function() {
-            var books = getCatalogue();
-            var $select = $('#book-select');
-            $.each(books, function(i, book) {
-                $select.append($('<option>', { value: book.title, text: book.title + ' by ' + book.author }));
-            });
-            var urlParams = new URLSearchParams(window.location.search);
-            var preselectedBook = urlParams.get('book');
-            if (preselectedBook) {
-                $select.val(decodeURIComponent(preselectedBook));
-            }
-        });
-    </script>
+    <script src="./js/reservations.js"></script>
 </body>
 </html>
