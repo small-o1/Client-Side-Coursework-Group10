@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Catalog - UniLibrary</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="navbar">
@@ -12,16 +13,34 @@
             <div class="logo">UniLibrary</div>
             <nav>
                 <a href="index.html">Home</a>
-                <a href="catalog.html">Search Catalog</a>
+                <a href="catalog.html" class="active">Search Catalog</a>
                 <a href="reservations.html">My Reservations</a>
                 <a href="schedule.html">Library Hours</a>
             </nav>
         </div>
     </header>
 
-    <main class="page-content">
-        <h2>Search Catalog</h2>
-        <p>Browse our collection of books and academic resources.</p>
+    <main>
+        <section class="catalog-header">
+            <div class="container">
+                <h1>Browse the Library Catalogue</h1>
+                <p>Search by title, author, or genre. Filter to find exactly what you need.</p>
+                
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search books by title, author, or genre..." autocomplete="off">
+                    <button id="search-btn" class="btn-search">Search</button>
+                </div>
+
+                <div class="genre-filters" id="genre-filters"></div>
+            </div>
+        </section>
+
+        <section class="catalogue-list container">
+            <div class="results-meta">
+                <span id="results-count"></span>
+            </div>
+            <div id="book-list"></div>
+        </section>
     </main>
 
     <footer>
@@ -48,5 +67,46 @@
             </div>
         </div>
     </footer>
+
+    <script src="js/catalog.js"></script>
+    <script>
+        $(document).ready(function() {
+            var currentGenre = 'all';
+            var currentQuery = '';
+
+            function loadBooks() {
+                var books;
+                if (currentQuery) {
+                    books = searchCatalogue(currentQuery);
+                } else {
+                    books = getCatalogue();
+                }
+                if (currentGenre !== 'all') {
+                    books = books.filter(function(b) { return b.genre === currentGenre; });
+                }
+                renderBookList(books, 'book-list');
+                $('#results-count').text('Showing ' + books.length + ' book' + (books.length !== 1 ? 's' : ''));
+            }
+
+            buildGenreFilters('genre-filters', function(genre) {
+                currentGenre = genre;
+                loadBooks();
+            });
+
+            loadBooks();
+
+            $('#search-btn').on('click', function() {
+                currentQuery = $('#search-input').val();
+                loadBooks();
+            });
+
+            $('#search-input').on('keypress', function(e) {
+                if (e.which === 13) {
+                    currentQuery = $('#search-input').val();
+                    loadBooks();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

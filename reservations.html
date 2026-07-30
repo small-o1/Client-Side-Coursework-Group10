@@ -25,13 +25,9 @@
         <p>Please fill out the form below to reserve a title for pickup or delivery.</p>
         <form action="#" method="POST" class="reservation-form">
             <div class="form-group">
-                <label for="book-select">Select a Book - Temporary hardcoded until local storage done:</label>
+                <label for="book-select">Select a Book:</label>
                 <select id="book-select" name="book" required>
                     <option value="" disabled selected>-- Choose a title --</option>
-                    <option value="1984">1984 by George Orwell</option>
-                    <option value="dune">Dune by Frank Herbert</option>
-                    <option value="pride-and-prejudice">Pride and Prejudice by Jane Austen</option>
-                    <option value="the-hobbit">The Hobbit by J.R.R. Tolkien</option>
                 </select>
             </div>
 
@@ -74,6 +70,21 @@
         </div>
     </footer>
 
+    <script src="./js/catalog.js"></script>
     <script src="./js/reservations.js"></script>
+    <script>
+        $(document).ready(function() {
+            var books = getCatalogue();
+            var $select = $('#book-select');
+            $.each(books, function(i, book) {
+                $select.append($('<option>', { value: book.title, text: book.title + ' by ' + book.author }));
+            });
+            var urlParams = new URLSearchParams(window.location.search);
+            var preselectedBook = urlParams.get('book');
+            if (preselectedBook) {
+                $select.val(decodeURIComponent(preselectedBook));
+            }
+        });
+    </script>
 </body>
 </html>
