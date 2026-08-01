@@ -1,6 +1,5 @@
 $(function () {
 
-    // ── Special dates ──────────────────────────────────────
     var CLOSED = {
         '2026-07-12': 'Bank Holiday',
         '2026-07-13': 'Bank Holiday',
@@ -71,7 +70,6 @@ $(function () {
         $('#cal-grid').html(html);
     }
 
-    // ── View toggle ─────────────────────────────────────────
     $('#btn-list').on('click', function () {
         $(this).addClass('active');
         $('#btn-calendar').removeClass('active');
@@ -87,7 +85,6 @@ $(function () {
         renderCalendar(curYear, curMonth);
     });
 
-    // ── Month navigation ────────────────────────────────────
     $('#prev-month').on('click', function () {
         curMonth--;
         if (curMonth < 0) { curMonth = 11; curYear--; }

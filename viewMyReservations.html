@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reservations - University Library Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">UniLibrary</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Search Catalog</a>
+                <a href="reservations.html">Make a Reservation</a>
+                <a href="viewMyReservations.html" class="active">View My Reservations</a>
+                <a href="schedule.html">Library Hours</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-content">
+            <h1 class="page-title">My Account & Reservations</h1>
+            
+            <div class="reservation-form" style="margin-bottom: 2rem; max-width: 100%;">
+                <div class="form-group">
+                    <label for="lookup-address">Enter your delivery address to view your holds:</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="lookup-address" placeholder="e.g. 123 Library Lane" style="flex: 1;">
+                        <button id="btn-lookup" type="button" class="btn-search" style="margin: 0;">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reservations-display" style="display: none;">
+                <div class="notice notice-info">
+                    <strong>Pickup Policy</strong>
+                    <p>Reserved items must be collected from the Main Circulation Desk within 3 working days of becoming available.</p>
+                </div>
+
+                <h3 style="color: #003366; margin-top: 2rem; margin-bottom: 0.5rem;">Ready for Pickup</h3>
+                <table class="schedule-table" id="ready-table">
+                </table>
+
+                <h3 style="color: #003366; margin-top: 2.5rem; margin-bottom: 0.5rem;">Currently Borrowed</h3>
+                <table class="schedule-table" id="borrowed-table">
+                </table>
+
+                <h3 style="color: #003366; margin-top: 2.5rem; margin-bottom: 0.5rem;">Pending Holds</h3>
+                <table class="schedule-table" id="dynamic-holds-table">
+                </table>
+            </div>
+            
+            <div id="lookup-error" style="display: none; color: #c0392b; margin-top: 1rem; text-align: center; font-weight: bold;">
+                No reservations found for that address.
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Opening Hours</h4>
+                <ul class="hours-list">
+                    <li><span>Monday – Sunday</span><span>8:00 AM – Midnight</span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Find Us</h4>
+                <address>
+                    York St<br>
+                    Belfast BT15 1ED
+                </address>
+                <p class="footer-phone">028 7012 3456</p>
+            </div>
+            <div class="footer-col">
+                <h4>UniLibrary</h4>
+                <p class="footer-about">A non-profit university library dedicated to helping students learn, research, and grow.</p>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="catalog.html">Search Catalog</a>
+                    <a href="reservations.html">My Reservations</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/reservations.js"></script>
+</body>
+</html>
