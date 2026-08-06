@@ -2,6 +2,8 @@
 
 > A non-profit library website designed to help kids learn.
 
+🔗 **Repository:** [https://github.com/small-o1/Client-Side-Coursework-Group10]
+
 ---
 
 ## 📖 About
