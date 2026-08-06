@@ -3,35 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Campus Library</title>
-    <!-- Make sure this matches your team's CSS filename -->
-    <link rel="stylesheet" href="style.css">
+    <title>About Us - UniLibrary</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-    <!-- Header Navigation -->
     <header class="navbar">
-        <div class="nav-container">
-            <div class="logo">CAMPUS LIBRARY</div>
+        <div class="container nav-container">
+            <div class="logo">UniLibrary</div>
             <nav>
                 <a href="index.html">Home</a>
-                <a href="catalogue.html">Catalogue</a>
+                <a href="catalog.html">Search Catalog</a>
+                <a href="reservations.html">Make a Reservation</a>
+                <a href="viewMyReservations.html">View My Reservations</a>
+                <a href="schedule.html">Library Hours</a>
                 <a href="about.html" class="active">About Us</a>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Simple Hero Section -->
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>About Our Library</h1>
-                <p>Supporting academic success and community learning.</p>
-            </div>
-        </section>
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>About Our Library</h1>
+            <p>Supporting academic success and community learning.</p>
+        </div>
+    </section>
 
-        <!-- Clean Text Content Box -->
+    <main>
         <section class="page-content">
             <h2 class="page-title">Welcome to the Library</h2>
             <p style="margin-bottom: 1.5rem;">
@@ -44,18 +41,36 @@
             </p>
 
             <h2 class="page-title">Contact Information</h2>
-            <p style="margin-bottom: 0.5rem;"><strong>Location:</strong> Main Campus, Library Building</p>
-            <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> libraryhelp@university.edu</p>
-            <p><strong>Phone:</strong> (555) 019-2831</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Location:</strong> York St, Belfast BT15 1ED</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> libraryhelp@unilibrary.ac.uk</p>
+            <p><strong>Phone:</strong> 028 7012 3456</p>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="site-footer">
-            <p>&copy; 2026 Campus Library Project. Group University Work.</p>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Opening Hours</h4>
+                <ul class="hours-list">
+                    <li><span>Monday – Sunday</span><span>8:00 AM – Midnight</span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Find Us</h4>
+                <address>York St<br>Belfast BT15 1ED</address>
+                <p class="footer-phone">📞 028 7012 3456</p>
+            </div>
+            <div class="footer-col">
+                <h4>UniLibrary</h4>
+                <p class="footer-about">A non-profit university library dedicated to helping students learn, research, and grow.</p>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="catalog.html">Search Catalog</a>
+                    <a href="reservations.html">My Reservations</a>
+                    <a href="about.html">About Us</a>
+                </nav>
+            </div>
         </div>
     </footer>
-
 </body>
 </html>
